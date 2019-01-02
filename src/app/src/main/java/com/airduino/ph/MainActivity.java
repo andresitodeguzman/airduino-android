@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 		webSettings.setJavaScriptEnabled(true);
        	webSettings.setDomStorageEnabled(true);
 		webSettings.setSaveFormData(false);
-		webSettings.setUserAgentString("airduino-android-app");
+		webSettings.setUserAgentString("airduino-ph-android-app");
 		
 		mWebView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 		
@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
 		// Loads a Page when there is no internet
 		mWebView.setWebViewClient(new WebViewClient() {
 			public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-				mWebView.loadUrl("file:///android_asset/welcome.html");
+				mWebView.loadUrl("file:///android_asset/index.html");
 			}
 		});
 	
@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
 
 		});
  
-        mWebView.loadUrl("file:///android_asset/welcome.html");
+        mWebView.loadUrl("file:///android_asset/index.html");
 		
       }
 	  
