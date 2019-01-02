@@ -187,10 +187,23 @@
                             <center><span class="card-title">Chart</span></center><br>
                             <canvas id="Tchart" width="50px" height="30px"></canvas>
                         </div>
-                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-                            <a href="#Texport" class="modal-trigger grey-text text-darken-2">Export</a>
+                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;" id="Tcardaction">                            
                         </div>
                     </div>
+                    <br>
+                    
+                    <div class="card">
+                    		<div class="card-content">
+                    			<center>
+                    				<span class="card-title">For your Information</span>
+                    			</center>
+                    			<br>
+                    			<p>
+                    					The temperature reading in the data is the temperature within the environment. The sensor equipped in an Airduino station can measure 0°C until 50°C. Celsius(°C) is the unit used, 0°C means that the temperature can freeze water while, 100°C can boil water. The normal body temperature of human is at 37.5°C.
+                    				</p>
+                    		</div>
+                    	</div>
+                    	
                     <br>
                     <div class="card">
                         <div class="card-content">
@@ -205,26 +218,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- temp export modal -->
-                <div class="modal modal-fixed-footer" id="Texport">
-                    <div class="modal-content">
-                        <h5>Export</h5>
-                        <br>
-                        <ul class="collection">
-                            <li class="collection-item">
-                                <a href="#!">CSV</a>
-                            </li>
-                            <li class="collection-item">
-                                <a href="#!">Excel (XLSX)</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
-                    </div>
-                </div>
-                <!-- temp export modal -->
 
                 <br><br><br><br><br>
             </div>
@@ -250,10 +243,23 @@
                             <center><span class="card-title">Chart</span></center><br>
                             <canvas id="Hchart" width="50px" height="30px"></canvas>
                         </div>
-                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-                            <a href="#Hexport" class="modal-trigger grey-text text-darken-2">Export</a>
+                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;" id="Hcardaction">
                         </div>
                     </div>
+                    <br>
+                    	
+                    	<div class="card">
+                    		<div class="card-content">
+                    			<center>
+                    				<span class="card-title">For your Information</span>
+                    			</center>
+                    			<br>
+                    			<p>
+                    					Relative Humidity is the amount of water vapor in the air in contrast with the saturation point of the water vapor in the air. It is measured in percentage. 100% suggests that condensation is occuring, while 0% tells us that the air is dry. The sensor equipped in an Airduino station can measure 20-90% of the humidity. 
+                    				</p>
+                    		</div>
+                    	</div>
+                    	
                     <br>
                     <div class="card">
                         <div class="card-content">
@@ -269,25 +275,6 @@
                     </div>
                 </div>
 
-                <!-- humidity export modal -->
-                <div class="modal modal-fixed-footer" id="Hexport">
-                    <div class="modal-content">
-                        <h5>Export</h5>
-                        <br>
-                        <ul class="collection">
-                            <li class="collection-item">
-                                <a href="#!">CSV</a>
-                            </li>
-                            <li class="collection-item">
-                                <a href="#!">Excel (XLSX)</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
-                    </div>
-                </div>
-                <!-- humidity export modal -->
             	<br><br><br><br><br>
         	</div>
         </div>
@@ -312,11 +299,56 @@
                             <center><span class="card-title">Chart</span></center><br>
                             <canvas id="Achart" width="50px" height="30px"></canvas>
                         </div>
-                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-                            <a href="#Aexport" class="modal-trigger grey-text text-darken-2">Export</a>
+                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;" id="Acardaction">
                         </div>
                     </div>
                     <br>
+                    
+                    <div class="card">
+                    		<div class="card-content">
+                    			<center>
+                    				<span class="card-title">For your Information</span>
+                    			</center>
+                    			<br>
+                    			<p>
+                    					Air Quality indicates the amount of particulates in the air. You can use this measurement to know if the air in the place you are living in is polluted or not. Expressed in PPM or Parts per million, the higher the number, the more polluted the air is. The sensor equipped in an Airduino station can measure 0-301 PPM.
+                    				</p>
+                    		</div>
+                    	</div>
+                    	
+                    	<br>
+                    		
+                    		<div class="card">
+                    		<div class="card-content">
+                    			<center>
+                    				<span class="card-title">Air Quality Chart</span>
+                    			</center>
+                    			<br>
+                    			<ul class="collection">
+                    				<li class="collection-item green lighten-3">
+                    						<p><center>0-50 PPM - Good</center></p>
+                    				</li>
+                    				<li class="collection-item yellow lighten-3 grey-text">
+                    						<p><center>51-100 PPM - Moderate</center></p>
+                    				</li>
+                    				<li class="collection-item orange lighten-3">
+                    						<p><center>101-150 PPM - Unhealthy for Sensitive Groups</center></p>
+                    				</li>
+                    				<li class="collection-item red lighten-3">
+                    						<p><center>151-200 PPM - Unhealthy</center></p>
+                    				</li>
+                    				<li class="collection-item purple lighten-3">
+                    						<p><center>201-300 PPM - Very Unhealthy</center></p>
+                    				</li>
+                    				<li class="collection-item red lighten-2">
+                    						<p><center>301 PPM above - Hazardous</center></p>
+                    				</li>
+                    			</ul>
+                    		</div>
+                    	</div>
+                    		
+                    	<br>
+                    
                     <div class="card">
                         <div class="card-content">
                             <center><span class="card-title">Previous 10 Record</span></center><br>
@@ -330,26 +362,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- temp export modal -->
-                <div class="modal modal-fixed-footer" id="Aexport">
-                    <div class="modal-content">
-                        <h5>Export</h5>
-                        <br>
-                        <ul class="collection">
-                            <li class="collection-item">
-                                <a href="#!">CSV</a>
-                            </li>
-                            <li class="collection-item">
-                                <a href="#!">Excel (XLSX)</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
-                    </div>
-                </div>
-                <!-- temp export modal -->
 
                 <br><br><br><br><br>
             </div>
@@ -369,50 +381,6 @@
 			</div>
 		</div>
         <!-- .addstation activity -->
-        
-        <!-- range activity -->
-        <div class="activity" id="rangeActivity">
-            <div class="content" style="margin-left:5%;margin-right:5%;">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <select id="start_month" class="browser-default">
-                            <option value="Jan">January</option>
-                            <option value="Feb">February</option>
-                            <option value="Mar">March</option>
-                            <option value="Apr">April</option>
-                            <option value="May">May</option>
-                            <option value="Jun">June</option>
-                            <option value="Jul">July</option>
-                            <option value="Aug">August</option>
-                            <option value="Sep">September</option>
-                            <option value="Oct">October</option>
-                            <option value="Nov">November</option>
-                            <option value="Dec">December</option>
-                        </select>
-                    </div>
-                    <div class="input-field col s6">
-                        <select id="start_day" class="browser-default">
-                            <option value="1">1</option> <option value="2">2</option>
-                            <option value="3">3</option> <option value="4">4</option>
-                            <option value="5">5</option> <option value="6">6</option>
-                            <option value="7">7</option> <option value="8">8</option>
-                            <option value="9">9</option> <option value="10">10</option>
-                            <option value="11">11</option> <option value="12">12</option>
-                            <option value="13">13</option> <option value="14">14</option>
-                            <option value="15">15</option> <option value="16">16</option>
-                            <option value="17">17</option> <option value="18">18</option>
-                            <option value="19">19</option> <option value="20">20</option>
-                            <option value="21">21</option> <option value="22">22</option>
-                            <option value="23">23</option> <option value="24">24</option>
-                            <option value="25">25</option> <option value="26">26</option>
-                            <option value="27">27</option> <option value="28">28</option>
-                            <option value="29">29</option> <option value="30">30</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- .range activity -->
 
         <!-- bottombar -->
         <div class="bottombar">

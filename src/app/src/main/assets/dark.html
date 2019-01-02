@@ -15,6 +15,7 @@
         	.card {
         		
         		background-color: #37474f !important;
+        		box-shadow: none !important;
         		
         	}
         	.bottombar {
@@ -207,10 +208,23 @@
                             <center><span class="card-title white-text">Chart</span></center><br>
                             <canvas id="Tchart" width="50px" height="30px" class="grey lighten-1"></canvas>
                         </div>
-                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-                            <a href="#Texport" class="modal-trigger white-text">Export</a>
+                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;" id="Tcardaction">
                         </div>
                     </div>
+                    <br>
+                    	
+                    <div class="card">
+                    		<div class="card-content">
+                    			<center>
+                    				<span class="card-title white-text">For your Information</span>
+                    			</center>
+                    			<br>
+                    			<p>
+                    					The temperature reading in the data is the temperature within the environment. The sensor equipped in an Airduino station can measure 0°C until 50°C. Celsius(°C) is the unit used, 0°C means that the temperature can freeze water while, 100°C can boil water. The normal body temperature of human is at 37.5°C.
+                    				</p>
+                    		</div>
+                    	</div>
+                    	
                     <br>
                     <div class="card">
                         <div class="card-content">
@@ -226,27 +240,7 @@
                     </div>
                 </div>
 
-                <!-- temp export modal -->
-                <div class="modal modal-fixed-footer blue-grey darken-3" id="Texport">
-                    <div class="modal-content">
-                        <h5>Export</h5>
-                        <br>
-                        <ul class="collection">
-                            <li class="collection-item">
-                                <a href="#!">CSV</a>
-                            </li>
-                            <li class="collection-item">
-                                <a href="#!">Excel (XLSX)</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer blue-grey darken-2">
-                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
-                    </div>
-                </div>
-                <!-- temp export modal -->
-
-                <br><br><br><br><br>
+                	<br><br><br><br><br>
             </div>
         </div>
         <!-- .temperature -->
@@ -270,10 +264,23 @@
                             <center><span class="card-title white-text">Chart</span></center><br>
                             <canvas id="Hchart" width="50px" height="30px" class="grey lighten-1"></canvas>
                         </div>
-                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-                            <a href="#Hexport" class="modal-trigger white-text">Export</a>
+                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;" id="Hcardaction">
                         </div>
                     </div>
+                    <br>
+                    
+                    <div class="card">
+                    		<div class="card-content">
+                    			<center>
+                    				<span class="card-title white-text">For your Information</span>
+                    			</center>
+                    			<br>
+                    			<p>
+                    					Relative Humidity is the amount of water vapor in the air in contrast with the saturation point of the water vapor in the air. It is measured in percentage. 100% suggests that condensation is occuring, while 0% tells us that the air is dry. The sensor equipped in an Airduino station can measure 20-90% of the humidity. 
+                    				</p>
+                    		</div>
+                    	</div>
+                    
                     <br>
                     <div class="card">
                         <div class="card-content">
@@ -289,25 +296,6 @@
                     </div>
                 </div>
 
-                <!-- humidity export modal -->
-                <div class="modal modal-fixed-footer blue-grey darken-3" id="Hexport">
-                    <div class="modal-content">
-                        <h5>Export</h5>
-                        <br>
-                        <ul class="collection">
-                            <li class="collection-item">
-                                <a href="#!">CSV</a>
-                            </li>
-                            <li class="collection-item">
-                                <a href="#!">Excel (XLSX)</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer blue-grey darken-2">
-                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
-                    </div>
-                </div>
-                <!-- humidity export modal -->
             	<br><br><br><br><br>
         	</div>
         </div>
@@ -332,10 +320,54 @@
                             <center><span class="card-title white-text">Chart</span></center><br>
                             <canvas id="Achart" width="50px" height="30px" class="grey lighten-1"></canvas>
                         </div>
-                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-                            <a href="#Aexport" class="modal-trigger white-text">Export</a>
+                        <div class="card-action" style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;" id="Acardaction">
                         </div>
                     </div>
+                    <br>
+                    	
+                    	<div class="card">
+                    		<div class="card-content">
+                    			<center>
+                    				<span class="card-title white-text">For your Information</span>
+                    			</center>
+                    			<br>
+                    			<p>
+                    					Air Quality indicates the amount of particulates in the air. You can use this measurement to know if the air in the place you are living in is polluted or not. Expressed in PPM or Parts per million, the higher the number, the more polluted the air is. The sensor equipped in an Airduino station can measure 0-301 PPM.
+                    				</p>
+                    		</div>
+                    	</div>
+                    	
+                    	<br>
+                    		
+                    		<div class="card">
+                    		<div class="card-content">
+                    			<center>
+                    				<span class="card-title white-text">Air Quality Chart</span>
+                    			</center>
+                    			<br>
+                    			<ul class="collection">
+                    				<li class="collection-item green lighten-3">
+                    						<p><center>0-50 PPM - Good</center></p>
+                    				</li>
+                    				<li class="collection-item yellow lighten-3 grey-text">
+                    						<p><center>51-100 PPM - Moderate</center></p>
+                    				</li>
+                    				<li class="collection-item orange lighten-3">
+                    						<p><center>101-150 PPM - Unhealthy for Sensitive Groups</center></p>
+                    				</li>
+                    				<li class="collection-item red lighten-3">
+                    						<p><center>151-200 PPM - Unhealthy</center></p>
+                    				</li>
+                    				<li class="collection-item purple lighten-3">
+                    						<p><center>201-300 PPM - Very Unhealthy</center></p>
+                    				</li>
+                    				<li class="collection-item red lighten-2">
+                    						<p><center>301 PPM above - Hazardous</center></p>
+                    				</li>
+                    			</ul>
+                    		</div>
+                    	</div>
+                    	
                     <br>
                     <div class="card">
                         <div class="card-content">
@@ -350,26 +382,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- air quality export modal -->
-                <div class="modal modal-fixed-footer blue-grey darken-3" id="Aexport">
-                    <div class="modal-content">
-                        <h5>Export</h5>
-                        <br>
-                        <ul class="collection">
-                            <li class="collection-item">
-                                <a href="#!">CSV</a>
-                            </li>
-                            <li class="collection-item">
-                                <a href="#!">Excel (XLSX)</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer blue-grey darken-2">
-                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
-                    </div>
-                </div>
-                <!-- air quality export modal -->
 
                 <br><br><br><br><br>
             </div>

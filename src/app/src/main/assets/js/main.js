@@ -95,6 +95,18 @@ var refreshActivity = ()=>{
     showBottombar();
 }
 
+var isDarkMode = ()=>{
+	if(!localStorage.getItem("airduino-darkmode")){
+		return false;
+	} else {
+		if(localStorage.getItem("airduino-darkmode") == "on"){
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
 
 var getSavedDevices = ()=>{
     if(localStorage.getItem("airduino-devices")){
@@ -333,7 +345,6 @@ var getAirQualityObject = (id)=>{
             device_id:id
         },
         success: result=>{
-            result = JSON.parse(result);
             localStorage.setItem(`airduino-airquality-${id}`,JSON.stringify(result));
         }
     }).fail((error)=>{            
@@ -353,7 +364,16 @@ var launchTemperature = (id)=>{
             result = JSON.parse(result);
             $("#Tlocation").html(device.location);
             $("#Tcity").html(device.city);
-    
+            try {
+            			if(isDarkMode() == true){
+	            				$("#Tcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/dark.php?data_cat=temperature&device_id=${device.device_id}" class="white-text">Export</a>`);
+            			} else {
+            				$("#Tcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=temperature&device_id=${device.device_id}" class="grey-text text-darken-2">Export</a>`);
+            			}
+            } catch(error){
+            		$("#Tcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=temperature&device_id=${device.device_id}" class="grey-text text-darken-2">Export</a>`);
+            }
+                
             var latest = result[result.length - 1];
    
             var ts = new Date(latest.timestamp);
@@ -449,6 +469,16 @@ var launchHumidity = (id)=>{
 
             $("#Hlocation").html(device.location);
             $("#Hcity").html(device.city);
+            
+            try {
+            			if(isDarkMode() == true){
+	            				$("#Hcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/dark.php?data_cat=humidity&device_id=${device.device_id}" class="modal-trigger white-text">Export</a>`);
+            			} else {
+            				$("#Hcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=humidity&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2">Export</a>`);
+            			}
+            } catch(error){
+            		$("#Hcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=humidity&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2">Export</a>`);
+            } 
 
             var latest = result[result.length - 1];
             var ts = new Date(latest.timestamp);
@@ -525,10 +555,13 @@ var launchHumidity = (id)=>{
     }
 };
 
+
 var launchAirQuality = (id)=>{
 	try {
 
         var device = getSavedDeviceInfo(id);
+        
+        getAirQualityObject(device.device_id);
         
         var result = JSON.parse(localStorage.getItem(`airduino-airquality-${device.device_id}`));
         
@@ -538,6 +571,17 @@ var launchAirQuality = (id)=>{
 	
 	        $("#Alocation").html(device.location);
 	        $("#Acity").html(device.city);
+	        
+	        try {
+            			if(isDarkMode() == true){
+	            				$("#Acardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/dark.php?data_cat=airquality&device_id=${device.device_id}" class="modal-trigger white-text">Export</a>`);
+            			} else {
+            				$("#Acardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=airquality&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2">Export</a>`);
+            			}
+            } catch(error){
+            		$("#Acardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=airquality&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2">Export</a>`);
+            }
+ 
 	
 	        var lValue = latest.value;
 	        var lDescription = latest.description;
@@ -619,6 +663,7 @@ var launchAirQuality = (id)=>{
         console.log(error);
     }
 };
+
 
 var setupNewsFeed = ()=>{
 	var emptyFeed = `<center><p>No Alerts Yet</p></center>`;
