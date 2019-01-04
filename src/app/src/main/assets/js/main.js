@@ -366,12 +366,12 @@ var launchTemperature = (id)=>{
             $("#Tcity").html(device.city);
             try {
             			if(isDarkMode() == true){
-	            				$("#Tcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/dark.php?data_cat=temperature&device_id=${device.device_id}" class="white-text">Export</a>`);
+	            				$("#Tcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/dark.php?data_cat=temperature&device_id=${device.device_id}" class="white-text" onclick="showToast('Please wait...');">Export</a>`);
             			} else {
-            				$("#Tcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=temperature&device_id=${device.device_id}" class="grey-text text-darken-2">Export</a>`);
+            				$("#Tcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=temperature&device_id=${device.device_id}" class="grey-text text-darken-2" onclick="showToast('Please wait...');">Export</a>`);
             			}
             } catch(error){
-            		$("#Tcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=temperature&device_id=${device.device_id}" class="grey-text text-darken-2">Export</a>`);
+            		$("#Tcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=temperature&device_id=${device.device_id}" class="grey-text text-darken-2" onclick="showToast('Please wait...');">Export</a>`);
             }
                 
             var latest = result[result.length - 1];
@@ -472,12 +472,12 @@ var launchHumidity = (id)=>{
             
             try {
             			if(isDarkMode() == true){
-	            				$("#Hcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/dark.php?data_cat=humidity&device_id=${device.device_id}" class="modal-trigger white-text">Export</a>`);
+	            				$("#Hcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/dark.php?data_cat=humidity&device_id=${device.device_id}" class="modal-trigger white-text" onclick="showToast('Please wait...');">Export</a>`);
             			} else {
-            				$("#Hcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=humidity&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2">Export</a>`);
+            				$("#Hcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=humidity&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2" onclick="showToast('Please wait...');">Export</a>`);
             			}
             } catch(error){
-            		$("#Hcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=humidity&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2">Export</a>`);
+            		$("#Hcardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=humidity&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2" onclick="showToast('Please wait...');">Export</a>`);
             } 
 
             var latest = result[result.length - 1];
@@ -574,12 +574,12 @@ var launchAirQuality = (id)=>{
 	        
 	        try {
             			if(isDarkMode() == true){
-	            				$("#Acardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/dark.php?data_cat=airquality&device_id=${device.device_id}" class="modal-trigger white-text">Export</a>`);
+	            				$("#Acardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/dark.php?data_cat=airquality&device_id=${device.device_id}" class="modal-trigger white-text" onclick="showToast('Please wait...');">Export</a>`);
             			} else {
-            				$("#Acardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=airquality&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2">Export</a>`);
+            				$("#Acardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=airquality&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2" onclick="showToast('Please wait...');">Export</a>`);
             			}
             } catch(error){
-            		$("#Acardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=airquality&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2">Export</a>`);
+            		$("#Acardaction").html(`<a href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=airquality&device_id=${device.device_id}" class="modal-trigger grey-text text-darken-2" onclick="showToast('Please wait...');">Export</a>`);
             }
  
 	
