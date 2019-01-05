@@ -34,6 +34,17 @@ $(document).ready(function(){
         prepareHome();
     },120000);
 
+}).keypress(e=>{
+	
+	var key = e.which();
+	
+	if(key == 13){
+		var ch =  $("#Ausername").val();
+		if(ch){
+			editAccount();
+		}
+	}
+	
 });
 
 var showToast = (msg)=>{
@@ -328,6 +339,7 @@ var getHumidityObject = (id)=>{
         },
         success: result=>{
             result = JSON.parse(result);
+            result = result.reverse();
             localStorage.setItem(`airduino-humidity-${id}`,JSON.stringify(result));
         }
     }).fail((error)=>{            
@@ -345,6 +357,8 @@ var getAirQualityObject = (id)=>{
             device_id:id
         },
         success: result=>{
+        		   
+            result = result.reverse();
             localStorage.setItem(`airduino-airquality-${id}`,JSON.stringify(result));
         }
     }).fail((error)=>{            
@@ -359,6 +373,7 @@ var launchTemperature = (id)=>{
         getTemperatureObject(device.device_id);
 
         var result = localStorage.getItem(`airduino-temperature-${device.device_id}`);
+        
 
         try {
             result = JSON.parse(result);

@@ -14,6 +14,7 @@ public class MainActivity extends Activity {
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+    				setTheme(R.style.NoActionBar);
         super.onCreate(savedInstanceState);
 		
 		//Remove title bar

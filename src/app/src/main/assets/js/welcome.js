@@ -10,6 +10,22 @@ $(document).ready(()=>{
 
     setupTerms();
 
+}).keypress(e=>{
+		var key = e.which;
+		
+		var lg = $("#username").val();
+		var reg = $("#Rfirst_name").val();
+
+		if(key == 13){
+				if(lg){
+					signIn();
+				} else {
+					if(reg){
+						register();
+					}
+				}
+		}
+	
 });
 
 var loginCheck = ()=>{

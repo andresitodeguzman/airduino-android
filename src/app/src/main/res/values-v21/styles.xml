@@ -12,4 +12,11 @@
 		<item name = "android:windowActionBar">false</item>
         <item name = "android:windowNoTitle">true</item>
 	</style>
+	
+	<style name="NoActionBar.Launcher">
+		<item name="android:windowBackground">@drawable/launch_screen</item>
+		<!-- Optional, on Android 5+ you can modify the colorPrimaryDark color to match the windowBackground color for further branding-->
+		<!-- <item name="colorPrimaryDark">@android:color/white</item> -->
+	</style>
+	
 </resources>
