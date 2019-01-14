@@ -30,6 +30,10 @@
         		border:0;
         	}
         	
+        	input[type=text]{
+        		color:white !important;
+        	}
+        	
         </style>
     </head>
     <body class="blue-grey darken-4 white-text">
@@ -47,9 +51,9 @@
             <div class="right" style="margin-right:5%">
                     <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons grey-text">more_vert</i></a>
             </div>
-            <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="https://goo.gl/forms/YOQelHn2ATyPdzx42" class="black-text">Report a Problem</a></li>
-                <li><a href="#!" onclick="refreshData();" class="black-text">Refresh Data</a></li>
+            <ul id='dropdown1' class='dropdown-content blue-grey darken-1'>
+                <li><a href="https://goo.gl/forms/YOQelHn2ATyPdzx42" class="white-text">Report a Problem</a></li>
+                <li><a href="#!" onclick="refreshData();" class="white-text">Refresh Data</a></li>
             </ul>
         </nav>
         <!-- regular navbar -->
@@ -90,7 +94,7 @@
             <!--div class="content" style="margin-left:10px; margin-right:10px;"-->
             <div class="content">
                 <center>
-                    <h3>Good Day <span class="first_name">User</span></h3>
+                    <h3><span id="homeGreet">Good Day</span> <span class="first_name">User</span></h3>
                     <br><br>
                     <div id="homeEmptyDevices">
                         <br><br>
@@ -353,10 +357,10 @@
                     						<p><center>51-100 PPM - Moderate</center></p>
                     				</li>
                     				<li class="collection-item orange lighten-3">
-                    						<p><center>101-150 PPM - Unhealthy for Sensitive Groups</center></p>
+                    						<p><center>101-150 PPM - Unhealthy for Sensitive Groups (Unhealthy 1)</center></p>
                     				</li>
                     				<li class="collection-item red lighten-3">
-                    						<p><center>151-200 PPM - Unhealthy</center></p>
+                    						<p><center>151-200 PPM - Unhealthy (Unhealthy 2)</center></p>
                     				</li>
                     				<li class="collection-item purple lighten-3">
                     						<p><center>201-300 PPM - Very Unhealthy</center></p>
@@ -401,50 +405,6 @@
 			</div>
 		</div>
         <!-- .addstation activity -->
-        
-        <!-- range activity -->
-        <div class="activity" id="rangeActivity">
-            <div class="content" style="margin-left:5%;margin-right:5%;">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <select id="start_month" class="browser-default">
-                            <option value="Jan">January</option>
-                            <option value="Feb">February</option>
-                            <option value="Mar">March</option>
-                            <option value="Apr">April</option>
-                            <option value="May">May</option>
-                            <option value="Jun">June</option>
-                            <option value="Jul">July</option>
-                            <option value="Aug">August</option>
-                            <option value="Sep">September</option>
-                            <option value="Oct">October</option>
-                            <option value="Nov">November</option>
-                            <option value="Dec">December</option>
-                        </select>
-                    </div>
-                    <div class="input-field col s6">
-                        <select id="start_day" class="browser-default">
-                            <option value="1">1</option> <option value="2">2</option>
-                            <option value="3">3</option> <option value="4">4</option>
-                            <option value="5">5</option> <option value="6">6</option>
-                            <option value="7">7</option> <option value="8">8</option>
-                            <option value="9">9</option> <option value="10">10</option>
-                            <option value="11">11</option> <option value="12">12</option>
-                            <option value="13">13</option> <option value="14">14</option>
-                            <option value="15">15</option> <option value="16">16</option>
-                            <option value="17">17</option> <option value="18">18</option>
-                            <option value="19">19</option> <option value="20">20</option>
-                            <option value="21">21</option> <option value="22">22</option>
-                            <option value="23">23</option> <option value="24">24</option>
-                            <option value="25">25</option> <option value="26">26</option>
-                            <option value="27">27</option> <option value="28">28</option>
-                            <option value="29">29</option> <option value="30">30</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- .range activity -->
 
         <!-- bottombar -->
         <div class="bottombar">
@@ -504,7 +464,7 @@ By continuing to access or use our Service after those revisions become effectiv
 		    
                 </div>
                 <div class="modal-footer blue-grey darken-2">
-                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat white-text">Close</a>
                 </div>
             </div>
             <!-- .terms and conditions modal -->
@@ -609,7 +569,7 @@ By email: airduinoapplication@gmail.com<br>
                     </p>
                 </div>
                 <div class="modal-footer blue-grey darken-2">
-                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat white-text">Close</a>
                 </div>
             </div>
             <!-- .privacy policy modal -->
@@ -618,10 +578,16 @@ By email: airduinoapplication@gmail.com<br>
             <div id="aboutairduino" class="modal modal-fixed-footer blue-grey darken-3">
                 <div class="modal-content">
                     <h4>About Airduino</h4>
-                    <p>2018.</p>
+                    <p>
+                    	2018-2019.<br>
+                    	<br>
+                    	Abad, Shermin<br>
+                    	Duan, Aisha<br>
+                    	Mendoza, Kevin
+                    </p> 
                 </div>
                 <div class="modal-footer blue-grey darken-2">
-                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat white-text">Close</a>
                 </div>
             </div>
             <!-- .about modal -->
@@ -640,6 +606,10 @@ By email: airduinoapplication@gmail.com<br>
                             <input type="text" class="editAccField" id="Alast_name">
                             <label for="Alast_name">Last Name</label>
                         </div>
+                        <div class="input-field">
+                            <input type="text" class="editAccField" id="Aemail">
+                            <label for="Aemail">Email</label>
+                        </div>
                         <br>
                         <div class="input-field">
                             <input type="text" class="editAccField" id="Ausername">
@@ -652,8 +622,8 @@ By email: airduinoapplication@gmail.com<br>
                     </p>
                 </div>
                 <div class="modal-footer blue-grey darken-2">
-                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
-                    <a href="#!" onclick="editAccount();" class="waves-effect waves-blue btn-flat">Edit</a>
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat white-text">Close</a>
+                    <a href="#!" onclick="editAccount();" class="waves-effect waves-blue btn-flat white-text">Edit</a>
                 </div>
             </div>
             <!-- .account settings modal -->
@@ -666,7 +636,7 @@ By email: airduinoapplication@gmail.com<br>
                     <ul class="collection black-text" id="savedStationsListManage"></ul>
                 </div>
                 <div class="modal-footer blue-grey darken-2">
-                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat white-text">Close</a>
                 </div>
             </div>
             <!-- .saved stations modal -->
@@ -680,7 +650,7 @@ By email: airduinoapplication@gmail.com<br>
                 </div>
                 <div class="modal-footer blue-grey darken-2">
                     <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
-                    <a href="#!" onclick="localStorage.clear(); location.replace('index.html');" class="waves-effect waves-green btn-flat">Sign Out</a>
+                    <a href="#!" onclick="localStorage.clear(); location.replace('index.html');" class="waves-effect waves-green btn-flat white-text">Sign Out</a>
                 </div>
             </div>
             <!-- .logout modal -->

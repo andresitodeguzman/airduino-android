@@ -138,6 +138,7 @@ var register = ()=>{
 
     var fn = $("#Rfirst_name").val();
     var ln = $("#Rlast_name").val();
+    var em = $("#Remail").val();
     var u = $("#Rusername").val();
     var p = $("#Rpassword").val();
 
@@ -167,6 +168,7 @@ var register = ()=>{
                         data: {
                             first_name: fn,
                             last_name: ln,
+                            email:em,
                             username: u,
                             password: p
                         },

@@ -25,14 +25,20 @@ $(document).ready(function(){
 
     showActivity("home");
 
-    setupTerms();
-
     setInterval(()=>{
-        getTemperatureObject(element.device_id);
-        getHumidityObject(element.device_id);
-        getAirQualityObject(element.device_id);
+    	var sd = getSavedDevices();
+    	
+    try {
+        sd.forEach(element=>{
+            getTemperatureObject(element.device_id);
+            getHumidityObject(element.device_id);
+            getAirQualityObject(element.device_id);
+        });
         prepareHome();
-    },120000);
+    } catch(e){
+        console.log(e);
+    }
+    },30000);
 
 }).keypress(e=>{
 	
@@ -106,6 +112,25 @@ var refreshActivity = ()=>{
     showBottombar();
 }
 
+var refreshData = ()=>{
+					showToast("Getting new data");
+     var sd = getSavedDevices();
+    	
+    try {
+        sd.forEach(element=>{
+            getTemperatureObject(element.device_id);
+            getHumidityObject(element.device_id);
+            getAirQualityObject(element.device_id);
+        });
+        prepareHome();
+       } catch(e){
+       	
+       	console.log(e);
+       	
+       }
+};
+
+
 var isDarkMode = ()=>{
 	if(!localStorage.getItem("airduino-darkmode")){
 		return false;
@@ -146,6 +171,7 @@ var prepareAccount = ()=>{
     var ln = account['last_name'];
     var u = account['username'];
     var i = account['id'];
+    var e = account['email'];
 
     $(".first_name").html(fn);
     $(".last_name").html(ln);
@@ -154,25 +180,36 @@ var prepareAccount = ()=>{
     $("#Afirst_name").val(fn);
     $("#Alast_name").val(ln);
     $("#Ausername").val(u);
+    $("#Aemail").val(e);
 
     M.updateTextFields();
     
 }
 
 var prepareHome = ()=>{
+	
+				var d = new Date();
+				var time = d.getHours();
+				
+				if(time < 12){
+					// morning
+					$("#homeGreet").html("Good Morning");
+				} else {
+					if(time == 12){
+						// noon
+						$("#homeGreet").html("Good Day");
+					} else {
+						if(time < 14){
+							// afternoon
+							$("#homeGreet").html("Good Afternoon");
+						} else {
+							//evening
+							$("#homeGreet").html("Good Evening");
+						} // <6
+					}// == 12
+				} // < 12
+	
     var savedDevices = getSavedDevices();
-    /*var savedDevices = [
-        {
-            "id":1,
-            "location":"Brgy. Sta Fe",
-            "city":"Dasmarinas City"
-        },
-        {
-            "id":2,
-            "location":"Brgy. Commonwealth",
-            "city":"Quezon City"
-        }
-    ];*/
 
     if(savedDevices == ""){
         $("#homeDevices").hide();
@@ -201,6 +238,31 @@ var prepareHome = ()=>{
                     temp = temp[temp.length - 1];
                     hum = hum[hum.length - 1];
                     air = air[air.length - 1];
+                    airdesc = air.description;
+                    
+                    switch(airdesc){
+                    	case('Good'):
+                    		airdesc = `<span class="green-text text-darken-2">Good</span>`;
+                    		break;
+                    	case('Moderate'):
+                    	 airdesc = `<span class="yellow-text text-darken-2">Moderate</span>`;
+                    		break;
+                    	case('Unhealthy 1'):
+                    		airdesc = `<span class="orange-text text-darken-2">Unhealthy for Sensitive Groups</span>`;
+                    		break;
+                    		case('Unhealthy 2'):
+                    		airdesc = `<span class="red-text text-darken-2">Unhealthy</span>`;
+                    		break;
+                    	case('Very Unhealthy'):
+                    		airdesc = `<span class="purple-text text-darken-2">Very Unhealthy</span>`;
+                    		break;
+                    	case('Hazardous'):
+                    		airdesc = `<span class="red-text text-darken-3">Hazardous</span>`;
+                    		break;
+                    	default:
+                    		airdesc = `<span class="blue-text text-darken-2">${airdesc}</span>`;
+                    		break;
+                    }
 
                     var ts = new Date(temp.timestamp);
 
@@ -215,11 +277,11 @@ var prepareHome = ()=>{
                             <div class="col s6">
                             <br>
                                 <p style="font-size:-1;">Air Quality</p>
-                                <h5 class="blue-text">${air.description}</h5>
+                                <h5>${airdesc}</h5>
                                 <p>at ${air.value} PPM</p>
                             </div>
                         </div>
-                        <p class="grey-text">As of ${ts.toDateString()} (${ts.toLocaleTimeString()})</p>
+                        <p class="grey-text">As of ${ts.toDateString()} ${ts.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
                         <br><br>
                         <div class="row">
                             <div class="col s4">
@@ -392,7 +454,7 @@ var launchTemperature = (id)=>{
             var latest = result[result.length - 1];
    
             var ts = new Date(latest.timestamp);
-            ts = `${ts.toDateString()} (${ts.toLocaleTimeString()})`;
+            ts = `${ts.toDateString()} ${ts.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
     
     
             $("#Ttemperature").html(`${latest.value}°C`);
@@ -411,7 +473,7 @@ var launchTemperature = (id)=>{
 
             resultSlice.forEach(element=>{
                 var date = new Date(element.timestamp);
-                var time = date.toLocaleTimeString();
+                var time = date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
                 time_labels.push(time);
     
                 temp_data.push(element.value);
@@ -422,12 +484,12 @@ var launchTemperature = (id)=>{
             }
 
             result.forEach(element=>{
-                var date = new Date(element.timestamp);
+                var date = new Date(element.timestamp);            
     
                 var tpl = `
                     <li class="collection-item">
                         <p>${element.value}°C</p>
-                        <p style="font-size:8pt;" class="grey-text">${date.toDateString()} - ${date.toLocaleTimeString()}</p>
+                        <p style="font-size:8pt;" class="grey-text">${date.toDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
                     </li>
                 `;
     
@@ -498,7 +560,7 @@ var launchHumidity = (id)=>{
             var latest = result[result.length - 1];
             var ts = new Date(latest.timestamp);
             $("#Hpercentage").html(latest.value + "%");
-            $("#Hdatetime").html(`${ts.toDateString()} (${ts.toLocaleTimeString()})`);
+            $("#Hdatetime").html(`${ts.toDateString()} ${ts.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`);
 
             $("#Hhistory").html("");
 
@@ -512,7 +574,7 @@ var launchHumidity = (id)=>{
             }
             resultSlice.forEach(element=>{
                 var date = new Date(element.timestamp);
-                var time = date.toLocaleTimeString();
+                var time = date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
                 time_labels.push(time);
     
                 temp_data.push(element.value);
@@ -527,7 +589,7 @@ var launchHumidity = (id)=>{
                 var tpl = `
                     <li class="collection-item">
                         <p>${element.value}%</p>
-                        <p style="font-size:8pt;" class="grey-text">${date.toDateString()} - ${date.toLocaleTimeString()}</p>
+                        <p style="font-size:8pt;" class="grey-text">${date.toDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
                     </li>
                 `;
     
@@ -600,13 +662,38 @@ var launchAirQuality = (id)=>{
 	
 	        var lValue = latest.value;
 	        var lDescription = latest.description;
+	        var airdesc = lDescription;
+	        
+	        switch(airdesc){
+                    	case('Good'):
+                    		airdesc = `<span class="green-text text-darken-2">Good</span>`;
+                    		break;
+                    	case('Moderate'):
+                    	 airdesc = `<span class="yellow-text text-darken-2">Moderate</span>`;
+                    		break;
+                    	case('Unhealthy 1'):
+                    		airdesc = `<span class="orange-text text-darken-2">Unhealthy for Sensitive Groups</span>`;
+                    		break;
+                    		case('Unhealthy 2'):
+                    		airdesc = `<span class="red-text text-darken-2">Unhealthy</span>`;
+                    		break;
+                    	case('Very Unhealthy'):
+                    		airdesc = `<span class="purple-text text-darken-2">Very Unhealthy</span>`;
+                    		break;
+                    	case('Hazardous'):
+                    		airdesc = `<span class="red-text text-darken-3">Hazardous</span>`;
+                    		break;
+                    	default:
+                    		airdesc = `<span class="blue-text text-darken-2">${airdesc}</span>`;
+                    		break;
+                    }
 	
-	        $("#Aquality").html(`<b>${lDescription} </b><br>${lValue} PPM`);
+	        $("#Aquality").html(`<b>${airdesc} </b><br><span class="grey-text text-darken-2">${lValue} PPM</span>`);
 	
 	        var ts = new Date(latest.timestamp);
-	        ts = `${ts.toDateString()} (${ts.toLocaleTimeString()})`;
+	        ts = `${ts.toDateString()} ${ts.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
 	
-	        $("Adatetime").html(ts);
+	        $("#Adatetime").html(ts);
 	
 	        var time_labels = [];
 	        var temp_data = [];
@@ -620,7 +707,7 @@ var launchAirQuality = (id)=>{
 	        }
 	        resultSlice.forEach(element=>{
 	            var date = new Date(element.timestamp);
-	            var time = date.toLocaleTimeString();
+	            var time = date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 	            time_labels.push(time);
 	
 	            temp_data.push(element.value);
@@ -635,7 +722,7 @@ var launchAirQuality = (id)=>{
 	            var tpl = `
 	                <li class="collection-item">
 	                    <p>${element.description} at ${element.value} PPM</p>
-	                    <p style="font-size:8pt;" class="grey-text">${date.toDateString()} - ${date.toLocaleTimeString()}</p>
+	                    <p style="font-size:8pt;" class="grey-text">${date.toDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
 	                </li>
 	            `;
 	
@@ -689,12 +776,14 @@ var setupNewsFeed = ()=>{
             var entries = entries.reverse();
 			if(entries != []){
 				entries.forEach(element=>{
+					
+					ts = new Date(element.timestamp_created);
 					var tpl =  `
 							<div class="card">
 								<div class="card-content">
 									<h5>${element.title}</h5>
 									<p>${element.content}</p><br>
-									<p style="font-size:8pt;" class="grey-text">${element.timestamp_created}</p>
+									<p style="font-size:8pt;" class="grey-text">${ts.toDateString()} ${ts.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
 								</div>
 						</div>`;
 					$("#newsfeedList").append(tpl);
@@ -767,11 +856,12 @@ var launchAddStation = ()=>{
                             <script>
                                 $("#StationAdd${element.id}").click(()=>{
                                     addSavedStation('${ls}');
+                                                                                                         
                                     prepareHome();
                                     showBottombar();
                                     hideWindowedBar();
-                                    showNavbar();
-                                    showActivity("home");
+                                    showNavbar();                                   
+                                                                     showActivity("home");
                                     showToast("Added ${element.location} to saved stations");
                                 });
                             </script>

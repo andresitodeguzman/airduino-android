@@ -8,6 +8,7 @@ var prepareSavedStations = ()=>{
                     ${element.location} - ${element.city}
                 </p>
                 <br>
+                <a class="black-text" href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=ALL&device_id=${element.device_id}" onclick="showToast('Please Wait...')">Export Data </a> | 
                 <a class="red-text" href="#!" onclick="deleteSavedStation('${element.id}');">Remove</a>
             </li>
         `;
@@ -32,6 +33,7 @@ var addSavedStation = (obj)=>{
     }
     stations.push(obj);
     localStorage.setItem("airduino-devices",JSON.stringify(stations));
+
 
     getTemperatureObject(obj.device_id);
     getHumidityObject(obj.device_id);
@@ -66,6 +68,7 @@ var editAccount = ()=>{
     var i = acct.id;
     var fn = $("#Afirst_name").val();
     var ln = $("#Alast_name").val();
+    var em = $("#Aemail").val();
     var u = $("#Ausername").val();
     var p = $("#Apassword").val();
 
@@ -91,6 +94,7 @@ var editAccount = ()=>{
                         first_name:fn,
                         last_name:ln,
                         username:u,
+                        email:em,
                         password:p
                     },
                     success: result=>{
