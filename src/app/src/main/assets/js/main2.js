@@ -8,8 +8,10 @@ var prepareSavedStations = ()=>{
                     ${element.location} - ${element.city}
                 </p>
                 <br>
-                <a class="black-text" href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=ALL&device_id=${element.device_id}" onclick="showToast('Please Wait...')">Export Data </a> | 
+                <p>
+                <a class="black-text" href="https://airduino-ph.000webhostapp.com/export/index.php?data_cat=ALL&device_id=${element.device_id}" onclick="showToast('Please Wait...')">Export Data </a>
                 <a class="red-text" href="#!" onclick="deleteSavedStation('${element.id}');">Remove</a>
+                </p>
             </li>
         `;
         $("#savedStationsListManage").append(tpl);
