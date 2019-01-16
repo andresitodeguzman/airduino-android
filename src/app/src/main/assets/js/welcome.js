@@ -8,23 +8,19 @@ $(document).ready(()=>{
     $(".splashscreen").fadeOut();
     showActivity("welcome");
 
-    setupTerms();
-
 }).keypress(e=>{
-		var key = e.which;
-		
-		var lg = $("#username").val();
-		var reg = $("#Rfirst_name").val();
+    var key = e.which;
+    
+    var lg = $("#username").val();
+    var reg = $("#Rfirst_name").val();
 
-		if(key == 13){
-				if(lg){
-					signIn();
-				} else {
-					if(reg){
-						register();
-					}
-				}
-		}
+    if(key == 13){
+        if(lg){
+            signIn();
+        } else {
+            if(reg) register();
+        }
+    }
 	
 });
 
@@ -40,7 +36,7 @@ var loginCheck = ()=>{
            	 	location.replace('index.html');
            	 }
            } else {
-         					location.replace('index.html');
+            location.replace('index.html');
            } 
         } 
     }

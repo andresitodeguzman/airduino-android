@@ -1,6 +1,6 @@
 $(document).ready(function(){
 				
-    //loginCheck();
+    loginCheck();
     $('.dropdown-trigger').dropdown();
     $('.modal').modal();
     $('.tabs').tabs();
@@ -233,8 +233,6 @@ var prepareHome = ()=>{
                     var hum = JSON.parse(localStorage.getItem(`airduino-humidity-${element.device_id}`));
                     var air = JSON.parse(localStorage.getItem(`airduino-airquality-${element.device_id}`));
 
-                    console.log(hum);
-
                     temp = temp[temp.length - 1];
                     hum = hum[hum.length - 1];
                     air = air[air.length - 1];
@@ -315,8 +313,6 @@ var prepareHome = ()=>{
                     $("#homeDevicesList").append(tpl);
     
                 } catch(e){
-
-                    console.log(e);
 
                     var tpl = `
                         <h4>${element.location}</h4>
@@ -810,7 +806,6 @@ var setupNewsFeed = ()=>{
 					populate();
 				}
 			}).fail((error)=>{
-                console.log(error);
 				populate();
 			});
 		} else {
