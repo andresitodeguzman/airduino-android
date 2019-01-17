@@ -1,5 +1,4 @@
 $(document).ready(function(){
-				
     loginCheck();
     $('.dropdown-trigger').dropdown();
     $('.modal').modal();
@@ -773,13 +772,14 @@ var setupNewsFeed = ()=>{
 			if(entries != []){
 				entries.forEach(element=>{
 					
-					ts = new Date(element.timestamp_created);
+                    ts = new Date(element.timestamp_created);
+                    ts =  moment(element.timestamp_created).fromNow();
 					var tpl =  `
 							<div class="card">
 								<div class="card-content">
 									<h5>${element.title}</h5>
 									<p>${element.content}</p><br>
-									<p style="font-size:8pt;" class="grey-text">${ts.toDateString()} ${ts.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+									<p style="font-size:8pt;" class="grey-text">${ts}</p>
 								</div>
 						</div>`;
 					$("#newsfeedList").append(tpl);
