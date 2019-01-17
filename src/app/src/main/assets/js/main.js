@@ -191,18 +191,18 @@ var prepareHome = ()=>{
 				var time = d.getHours();
 				
 				if(time < 12){
-					// morning
+                    // morning
 					$("#homeGreet").html("Good Morning");
 				} else {
 					if(time == 12){
-						// noon
+                        // noon
 						$("#homeGreet").html("Good Day");
 					} else {
-						if(time < 14){
-							// afternoon
+						if(time >= 14){
+                            // afternoon
 							$("#homeGreet").html("Good Afternoon");
 						} else {
-							//evening
+                            //evening
 							$("#homeGreet").html("Good Evening");
 						} // <6
 					}// == 12
