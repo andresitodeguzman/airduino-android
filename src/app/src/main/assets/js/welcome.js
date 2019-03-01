@@ -137,9 +137,16 @@ var register = ()=>{
     var em = $("#Remail").val();
     var u = $("#Rusername").val();
     var p = $("#Rpassword").val();
+    var c = $("#Rcpassword").val();
 
     disable();
-
+    
+    if(c !== p){
+    
+        showToast("Password does not match");
+        
+    } else {
+    
     if(!u){
         enable();
         showToast("Username is Required");
@@ -192,5 +199,8 @@ var register = ()=>{
             }
         }
     }
+
+    }
+
 
 }
