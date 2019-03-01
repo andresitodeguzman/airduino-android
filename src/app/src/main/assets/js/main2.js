@@ -66,6 +66,22 @@ var editAccount = ()=>{
 
     disable();
 
+    var p = $("#Apassword").val();
+    var c = $("#Acpassword").val();
+    
+    if(p){
+     if(c !== p){
+         showToast("Password doesn't match");
+         enable();
+     } else {
+         doIt();
+     }
+    } else {
+     doIt();   
+    }
+        
+    function doIt(){
+        
     var acct = JSON.parse(localStorage.getItem("airduino-user"));
     var i = acct.id;
     var fn = $("#Afirst_name").val();
@@ -73,7 +89,8 @@ var editAccount = ()=>{
     var em = $("#Aemail").val();
     var u = $("#Ausername").val();
     var p = $("#Apassword").val();
-
+    var c = $("#Acpassword").val();
+    
     if(!fn){
         enable();
         showToast("First name is Required");
@@ -109,6 +126,8 @@ var editAccount = ()=>{
                                 localStorage.setItem("airduino-user",JSON.stringify(result.UserAccount));
                                 prepareAccount();
 
+                                showToast(result.message);
+                                
                                 enable();
 
                             } else {
@@ -129,6 +148,8 @@ var editAccount = ()=>{
 
             }
         }
+    }
+
     }
 
 };
