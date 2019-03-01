@@ -40,8 +40,7 @@ $(document).ready(function(){
     },30000);
 
 }).keypress(e=>{
-	
-	var key = e.which();
+	var key = e.which;
 	
 	if(key == 13){
 		var ch =  $("#Ausername").val();
