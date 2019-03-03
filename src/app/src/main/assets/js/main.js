@@ -773,14 +773,29 @@ var setupNewsFeed = ()=>{
 					
                     ts = new Date(element.timestamp_created);
                     ts =  moment(element.timestamp_created).fromNow();
-					var tpl =  `
+                    
+                    if(element.imgUrl){
+                        var tpl =  `
+							<div class="card">
+								<div class="card-img">
+									<img src="${element.imgUrl}" width="100%">
+								</div>
+								<div class="card-content">
+									<h5>${element.title}</h5>
+									<p>${element.content}</p><br>
+									<p style="font-size:8pt;" class="grey-text">${ts}</p>
+								</div>
+							</div>`;                        
+                    } else {
+                        var tpl =  `
 							<div class="card">
 								<div class="card-content">
 									<h5>${element.title}</h5>
 									<p>${element.content}</p><br>
 									<p style="font-size:8pt;" class="grey-text">${ts}</p>
 								</div>
-						</div>`;
+							</div>`;
+                    }
 					$("#newsfeedList").append(tpl);
 				});
 			} else {
@@ -855,7 +870,7 @@ var launchAddStation = ()=>{
                                     showBottombar();
                                     hideWindowedBar();
                                     showNavbar();                                   
-                                                                     showActivity("home");
+                                    showActivity("home");
                                     showToast("Added ${element.location} to saved stations");
                                 });
                             </script>
