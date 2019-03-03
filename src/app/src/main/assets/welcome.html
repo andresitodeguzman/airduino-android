@@ -16,25 +16,25 @@
         <div class="splashscreen grey darken-2">
         </div>
 
-		<div class="statusbar grey lighten-1">
+		<div class="statusbar grey lighten-1" style="z-index:999999999999999999999;">
 		  
 		</div>
-		
-        <nav class='navbar white z-depth-0'>
-            <div class="left"></div>
-            <div class="right" style="margin-right:5%">
-                <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons grey-text text-darken-2">more_vert</i></a>
-            </div>
-
-            <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="https://goo.gl/forms/YOQelHn2ATyPdzx42" class="black-text">Report a Problem</a></li>
-                <!--li><a href="main.html" class="black-text">Main</a></li-->
-            </ul>
-
-        </nav>
 
         <!-- welcome -->
         <div class="activity" id="welcomeActivity">
+            <nav class='navbar white z-depth-0'>
+                <div class="left"></div>
+                <div class="right" style="margin-right:5%">
+                    <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons grey-text text-darken-2">more_vert</i></a>
+                </div>
+
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a href="https://goo.gl/forms/YOQelHn2ATyPdzx42" class="black-text">Report a Problem</a></li>
+                    <!--li><a href="main.html" class="black-text">Main</a></li-->
+                </ul>
+
+	        </nav>
+            
             <div class="content">
                 <center>
                     <h3>Welcome to<br>Airduino</h3>
@@ -53,6 +53,18 @@
 
         <!-- account -->
         <div class="activity" id="accountActivity">
+            <nav class='navbar white z-depth-0'>
+                <div class="left"></div>
+                <div class="right" style="margin-right:5%">
+                    <a class='dropdown-trigger' href='#' data-target='dropdown2'><i class="material-icons grey-text text-darken-2">more_vert</i></a>
+                </div>
+
+                <ul id='dropdown2' class='dropdown-content'>
+                    <li><a href="https://goo.gl/forms/YOQelHn2ATyPdzx42" class="black-text">Report a Problem</a></li>
+                    <!--li><a href="main.html" class="black-text">Main</a></li-->
+                </ul>
+	        </nav>
+            
             <div class="activity" id="accountPreloader">
                 <div class="container">
                     <center>
@@ -107,6 +119,26 @@
 
         <!-- register -->
         <div class="activity" id="registerActivity">
+            
+            <nav class='navbar white z-depth-0'>
+                <div class="left" style="margin-left:5%;">
+                	<a href="#!" onclick="showActivity('account')">
+                    	<i class="material-icons grey-text text-darken-2">
+                        	arrow_back
+                        </i>
+                    </a>
+                </div>
+                <div class="right" style="margin-right:5%">
+                    <a class='dropdown-trigger' href='#' data-target='dropdown3'><i class="material-icons grey-text text-darken-2">more_vert</i></a>
+                </div>
+
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="https://goo.gl/forms/YOQelHn2ATyPdzx42" class="black-text">Report a Problem</a></li>
+                    <!--li><a href="main.html" class="black-text">Main</a></li-->
+                </ul>
+
+	        </nav>
+            
             <div class="content">
                 <center>
                     <h4>Create an Account</h4>
@@ -143,7 +175,6 @@
                         <p><font size="-2" class="grey-text">By continuing, you agree to our <a class="modal-trigger" href="#termsconditions">Terms and Conditions</a> and <a class="modal-trigger" href="#privacypolicy">Privacy Policy</a>.</font></p>
                         <br><br>
                         <a class="btn btn-medium blue darken-2 waves-effect right z-depth-0" style="border-radius:4px" onclick="register()">Register</a>
-                        <a class="btn btn-medium btn-flat transparent right z-depth-0" style="border-radius:4px" onclick="showActivity('account')">Sign In</a>
                         <br><br><br><br><br>
                     </div>
 
@@ -155,6 +186,18 @@
 
         <!-- forgotpw -->
         <div class="activity" id="forgotpwActivity">
+            <nav class='navbar white z-depth-0'>
+                <div class="left"></div>
+                <div class="right" style="margin-right:5%">
+                    <a class='dropdown-trigger' href='#' data-target='dropdown4'><i class="material-icons grey-text text-darken-2">more_vert</i></a>
+                </div>
+
+                <ul id='dropdown4' class='dropdown-content'>
+                    <li><a href="https://goo.gl/forms/YOQelHn2ATyPdzx42" class="black-text">Report a Problem</a></li>
+                    <!--li><a href="main.html" class="black-text">Main</a></li-->
+                </ul>
+	        </nav>
+            
             <div class="content">
                 <center>
                     <h4>Forgot Password</h4>
@@ -178,7 +221,7 @@
         <!-- .forgotpw -->
 
         <!-- terms and conditions modal -->
-        <div id="termsconditions" class="modal modal-fixed-footer">
+        <div id="termsconditions" class="modal modal-fixed-footer">            
             <div class="modal-content">
                 <h4>Terms and Conditions</h4>
 		<br>
