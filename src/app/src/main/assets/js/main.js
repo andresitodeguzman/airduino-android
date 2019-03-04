@@ -186,26 +186,26 @@ var prepareAccount = ()=>{
 
 var prepareHome = ()=>{
 	
-				var d = new Date();
-				var time = d.getHours();
-				
-				if(time < 12){
-                    // morning
-					$("#homeGreet").html("Good Morning");
-				} else {
-					if(time == 12){
-                        // noon
-						$("#homeGreet").html("Good Day");
-					} else {
-						if(time >= 14){
-                            // afternoon
-							$("#homeGreet").html("Good Afternoon");
-						} else {
-                            //evening
-							$("#homeGreet").html("Good Evening");
-						} // <6
-					}// == 12
-				} // < 12
+    var d = new Date();
+    var time = d.getHours();
+
+    if(time < 12){
+        // morning
+        $("#homeGreet").html("Good Morning");
+    } else {
+        if(time == 12){
+            // noon
+            $("#homeGreet").html("Good Day");
+        } else {
+            if(time <= 18){
+                // afternoon
+                $("#homeGreet").html("Good Afternoon");
+            } else {
+                //evening
+                $("#homeGreet").html("Good Evening");
+            } // <6
+        }// == 12
+    } // < 12
 	
     var savedDevices = getSavedDevices();
 
