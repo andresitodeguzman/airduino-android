@@ -243,13 +243,13 @@ var prepareHome = ()=>{
                     	case('Moderate'):
                     	 airdesc = `<span class="yellow-text text-darken-2">Moderate</span>`;
                     		break;
-                    	case('Unhealthy 1'):
+                    	case('Unhealty 1'):
                     		airdesc = `<span class="orange-text text-darken-2">Unhealthy for Sensitive Groups</span>`;
                     		break;
-                    		case('Unhealthy 2'):
+                    		case('Unhealty 2'):
                     		airdesc = `<span class="red-text text-darken-2">Unhealthy</span>`;
                     		break;
-                    	case('Very Unhealthy'):
+                    	case('Very Unhealty'):
                     		airdesc = `<span class="purple-text text-darken-2">Very Unhealthy</span>`;
                     		break;
                     	case('Hazardous'):
@@ -665,13 +665,13 @@ var launchAirQuality = (id)=>{
                     	case('Moderate'):
                     	 airdesc = `<span class="yellow-text text-darken-2">Moderate</span>`;
                     		break;
-                    	case('Unhealthy 1'):
+                    	case('Unhealty 1'):
                     		airdesc = `<span class="orange-text text-darken-2">Unhealthy for Sensitive Groups</span>`;
                     		break;
-                    		case('Unhealthy 2'):
+                    		case('Unhealty 2'):
                     		airdesc = `<span class="red-text text-darken-2">Unhealthy</span>`;
                     		break;
-                    	case('Very Unhealthy'):
+                    	case('Very Unhealty'):
                     		airdesc = `<span class="purple-text text-darken-2">Very Unhealthy</span>`;
                     		break;
                     	case('Hazardous'):
@@ -853,15 +853,14 @@ var launchAddStation = ()=>{
                         var randColor = colors[Math.floor(Math.random()*colors.length)];
 
                         var tpl = `
-                            <div class="card ${randColor} darken-2 white-text" style="box-shadow: 0 20px 40px rgba(92, 92, 92, 0.3);">
-                                <div class="card-content">
-                                    <h5>${element.location}</h5>
-                                    <p>${element.city}</p>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#!" id="StationAdd${element.id}" class="white-text">Add</a>
-                                </div>
-                            </div>
+							<a href="#!" id="StationAdd${element.id}">
+								<div class="card hoverable ${randColor} darken-2 white-text" style="box-shadow: 0 20px 40px rgba(92, 92, 92, 0.3);">
+									<div class="card-content">
+                                        <h5>${element.location}</h5>
+                                        <p>${element.city}</p>
+                                    </div>
+								</div>
+							</a>
                             <script>
                                 $("#StationAdd${element.id}").click(()=>{
                                     addSavedStation('${ls}');
