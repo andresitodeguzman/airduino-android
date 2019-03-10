@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
 		
 		setContentView(R.layout.main);
         
-        mWebView = findViewById(R.id.activity_main_webview);
+        mWebView = (WebView) findViewById(R.id.activity_main_webview);
 		
 		mWebView.setVerticalScrollBarEnabled(false);
        
