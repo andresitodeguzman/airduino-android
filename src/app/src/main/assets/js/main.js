@@ -480,13 +480,22 @@ var launchTemperature = (id)=>{
             result.forEach(element=>{
                 var date = new Date(element.timestamp);            
     
-                var tpl = `
+                if(isDarkMode() == true){
+                	var tpl = `
+                    <li class="collection-item blue-grey darken-3">
+                        <p class="white-text">${element.value}°C</p>
+                        <p style="font-size:8pt;" class="grey-text">${date.toDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                    </li>
+                `;    
+                } else {
+                  var tpl = `
                     <li class="collection-item">
                         <p>${element.value}°C</p>
                         <p style="font-size:8pt;" class="grey-text">${date.toDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
                     </li>
-                `;
-    
+                `;  
+                }
+                    
                 $("#Thistory").append(tpl);
     
             });
@@ -580,12 +589,22 @@ var launchHumidity = (id)=>{
             result.forEach(element=>{
                 var date = new Date(element.timestamp);
     
-                var tpl = `
+                if(isDarkMode() == true){
+                	var tpl = `
+                    <li class="collection-item blue-grey darken-3">
+                        <p class="white-text">${element.value}%</p>
+                        <p style="font-size:8pt;" class="grey-text">${date.toDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                    </li>
+                `;    
+                } else {
+                  var tpl = `
                     <li class="collection-item">
                         <p>${element.value}%</p>
                         <p style="font-size:8pt;" class="grey-text">${date.toDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
                     </li>
-                `;
+                `;  
+                }
+                
     
                 $("#Hhistory").append(tpl);
     
@@ -682,7 +701,12 @@ var launchAirQuality = (id)=>{
                     		break;
                     }
 	
-	        $("#Aquality").html(`<b>${airdesc} </b><br><span class="grey-text text-darken-2">${lValue} PPM</span>`);
+            if(isDarkMode() == true){
+               $("#Aquality").html(`<b>${airdesc} </b><br><span class="white-text">${lValue} PPM</span>`);
+            } else {
+            	$("#Aquality").html(`<b>${airdesc} </b><br><span class="grey-text text-darken-2">${lValue} PPM</span>`);   
+            }
+	        
 	
 	        var ts = new Date(latest.timestamp);
 	        ts = `${ts.toDateString()} ${ts.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
@@ -713,12 +737,22 @@ var launchAirQuality = (id)=>{
 	        result.forEach(element=>{
 	            var date = new Date(element.timestamp);
 	
-	            var tpl = `
+                if(isDarkMode() == true){
+                	var tpl = `
+	                <li class="collection-item blue-grey darken-3">
+	                    <p class="white-text">${element.description} at ${element.value} PPM</p>
+	                    <p style="font-size:8pt;" class="grey-text">${date.toDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+	                </li>
+	            `;    
+                } else {
+                  var tpl = `
 	                <li class="collection-item">
 	                    <p>${element.description} at ${element.value} PPM</p>
 	                    <p style="font-size:8pt;" class="grey-text">${date.toDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
 	                </li>
-	            `;
+	            `;  
+                }
+	            
 	
 	            $("#Ahistory").append(tpl);
 	
