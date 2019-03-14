@@ -579,7 +579,7 @@ var launchHumidity = (id)=>{
                 var date = new Date(element.timestamp);
                 var time = date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
                 time_labels.push(time);
-    
+    4
                 temp_data.push(element.value);
             });
     
@@ -812,14 +812,14 @@ var setupNewsFeed = ()=>{
                         var tpl =  `
 							<div class="card">
 								<div class="card-img">
-									<img src="${element.imgUrl}" width="100%">
+									<img src="${element.imgUrl}" width="100%" style="border-radius: 12px 12px 0px 0px;">
 								</div>
 								<div class="card-content">
 									<h5>${element.title}</h5>
 									<p>${element.content}</p><br>
 									<p style="font-size:8pt;" class="grey-text">${ts}</p>
 								</div>
-							</div>`;                        
+							</div><br>`;                        
                     } else {
                         var tpl =  `
 							<div class="card">
@@ -828,7 +828,7 @@ var setupNewsFeed = ()=>{
 									<p>${element.content}</p><br>
 									<p style="font-size:8pt;" class="grey-text">${ts}</p>
 								</div>
-							</div>`;
+							</div><br>`;
                     }
 					$("#newsfeedList").append(tpl);
 				});
