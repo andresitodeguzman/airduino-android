@@ -816,7 +816,7 @@ var setupNewsFeed = ()=>{
 								</div>
 								<div class="card-content">
 									<h5>${element.title}</h5>
-									<p>${element.content}</p><br>
+									<p style="white-space:pre-wrap;">${element.content}</p><br>
 									<p style="font-size:8pt;" class="grey-text">${ts}</p>
 								</div>
 							</div><br>`;                        
@@ -825,7 +825,7 @@ var setupNewsFeed = ()=>{
 							<div class="card">
 								<div class="card-content">
 									<h5>${element.title}</h5>
-									<p>${element.content}</p><br>
+									<p style="white-space:pre-wrap;">${element.content}</p><br>
 									<p style="font-size:8pt;" class="grey-text">${ts}</p>
 								</div>
 							</div><br>`;
