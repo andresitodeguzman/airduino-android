@@ -1,5 +1,10 @@
+@font-face {
+    font-family:"Product Sans";
+    src: url(fonts/Product-Sans-Regular.ttf);
+}
+
 body{
-    font-family: 'Montserrat-Regular', sans-serif !important;
+    font-family: 'Product Sans', sans-serif !important;
 }
 .bottombar {
     position:fixed;
@@ -113,7 +118,7 @@ li.collection-item > a {
   background-color:black;
   position:fixed !important;
   width:100%;
-  z-depth:999999999999999999999999999999999999;
+  z-index:999999999999999999999999999999999999;
 }
 .navbar{
   padding-top:25px !important;

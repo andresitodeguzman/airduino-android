@@ -28,6 +28,7 @@ $(document).ready(function(){
     	var sd = getSavedDevices();
     	
     try {
+        setupNewsFeed();
         sd.forEach(element=>{
             getTemperatureObject(element.device_id);
             getHumidityObject(element.device_id);
@@ -111,7 +112,7 @@ var refreshActivity = ()=>{
 }
 
 var refreshData = ()=>{
-					showToast("Getting new data");
+	 showToast("Getting new data");
      var sd = getSavedDevices();
     	
     try {
@@ -120,6 +121,7 @@ var refreshData = ()=>{
             getHumidityObject(element.device_id);
             getAirQualityObject(element.device_id);
         });
+        setupNewsFeed();
         prepareHome();
        } catch(e){
        	
