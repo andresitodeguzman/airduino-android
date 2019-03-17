@@ -3,9 +3,6 @@
     src: url(fonts/Product-Sans-Regular.ttf);
 }
 
-p {
-    font-size:1.3rem;
-}
 
 body{
     font-family: 'Product Sans', sans-serif !important;
