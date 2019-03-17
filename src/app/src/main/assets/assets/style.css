@@ -3,6 +3,10 @@
     src: url(fonts/Product-Sans-Regular.ttf);
 }
 
+p {
+    font-size:1.3rem;
+}
+
 body{
     font-family: 'Product Sans', sans-serif !important;
 }
@@ -63,7 +67,7 @@ body{
     border-style:solid;
     border-width: 1px;
     display:inline !important;
-    font-size: 10pt !important;
+    font-size: 11pt !important;
     font-weight: bold !important;
     padding: 0.5rem 2rem;
     color: grey;
@@ -75,7 +79,7 @@ body{
     border-style:solid;
     border-width: 1px;
     display:inline !important;
-    font-size: 10pt !important;
+    font-size: 11pt !important;
     font-weight: bold !important;
     padding: 0.5rem 2rem;
     color: grey;
@@ -92,7 +96,7 @@ body{
     max-width: auto;
 }
 .circle_button_border > span {
-    font-size:14pt;
+    font-size:15pt;
 }
 
 .card {
