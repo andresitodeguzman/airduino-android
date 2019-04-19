@@ -14,8 +14,8 @@ public class MainActivity extends Activity {
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    				setTheme(R.style.NoActionBar);
-        super.onCreate(savedInstanceState);
+    		setTheme(R.style.NoActionBar);
+		super.onCreate(savedInstanceState);
 		
 		//Remove title bar
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -24,20 +24,20 @@ public class MainActivity extends Activity {
 		
 		setContentView(R.layout.main);
         
-        mWebView = (WebView) findViewById(R.id.activity_main_webview);
+		mWebView = (WebView) findViewById(R.id.activity_main_webview);
 		
 		mWebView.setVerticalScrollBarEnabled(false);
        
-       	// Enable Javascript
+		// Enable Javascript
 		WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
-       	webSettings.setDomStorageEnabled(true);
+		webSettings.setDomStorageEnabled(true);
 		webSettings.setSaveFormData(false);
 		webSettings.setUserAgentString("airduino-ph-android-app");
 		
 		mWebView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 		
-      	// Force links and redirects to open in the WebView instead of in a browser
+		// Force links and redirects to open in the WebView instead of in a browser
 		//mWebView.setWebViewClient(new WebViewClient());
 		
 		mWebView.addJavascriptInterface(new WebAppInterface(this),"Android");
@@ -47,26 +47,26 @@ public class MainActivity extends Activity {
       
 		// Loads a Page when there is no internet
 		mWebView.setWebViewClient(new WebViewClient() {
-			public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-				mWebView.loadUrl("file:///android_asset/index.html");
-			}
+		  public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+		    mWebView.loadUrl("file:///android_asset/index.html");
+		  }
 		});
 	
 		mWebView.setDownloadListener(new DownloadListener() {       
 
-			@Override
-			public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
-				DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-				request.allowScanningByMediaScanner();
-				request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED); //Notify client once download is completed!
-				DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-				dm.enqueue(request);
-				Toast.makeText(getApplicationContext(), "The File is Being Downloaded", Toast.LENGTH_LONG).show();
-			}
+		@Override
+		public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+		  DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+		  request.allowScanningByMediaScanner();
+		  request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED); //Notify client once download is completed!
+		  DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+		  dm.enqueue(request);
+		  Toast.makeText(getApplicationContext(), "The File is Being Downloaded", Toast.LENGTH_LONG).show();
+		}
 
-		});
+	      });
  
-        mWebView.loadUrl("file:///android_asset/index.html");
+	      mWebView.loadUrl("file:///android_asset/index.html");
 		
       }
 	  
