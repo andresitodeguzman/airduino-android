@@ -46,9 +46,9 @@
                 <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons grey-text">more_vert</i></a>
             </div>
             <ul id='dropdown1' class='dropdown-content blue-grey darken-1'>
-                <li><a href="https://goo.gl/forms/YOQelHn2ATyPdzx42" target="_blank" class="white-text">Report a Problem</a></li>
+                <li><a href="#reportProblemModal" class="modal-trigger white-text">Report a Problem</a></li>
                 <li>
-                    <a href="https://goo.gl/forms/vlHg5tSZPgJrkBKK2" target="_blank" class="white-text">
+                    <a href="#giveFeedbackModal" class="modal-trigger white-text">
                     	Give Feedback
                     </a>
                 </li>
@@ -169,7 +169,11 @@
                             <i class="material-icons" style="margin-right:10px;">person</i> <span>Account Settings</span>
                         </a>
                     </li>
-                    
+                    <li class="collection-item blue-grey darken-4 white-text ">
+                        <a href="#buyAirduino" class="modal-trigger white-text text-darken-1">
+                            <i class="material-icons" style="margin-right:10px;">settings_remote</i> <span>Purchase an Airduino Station</span>
+                        </a>
+                    </li>
                     <li class="collection-item blue-grey darken-4 white-text">
                         <a href="#!" onclick="setDarkMode('off')" class="white-text text-darken-1">
                             <i class="material-icons" style="margin-right:10px;">brightness_2</i> <span>Toggle Dark Mode</span>
@@ -189,6 +193,11 @@
                 <br>
                 <center style="margin-left:20px; margin-right:20px">
                     <p style="font-size:-2;"><a class="modal-trigger blue-grey-text" href="#termsconditions">Terms and Conditions</a> | <a class="modal-trigger blue-grey-text" href="#privacypolicy">Privacy Policy</a> <br> <a class="blue-grey-text" href="https://www.privacy.gov.ph/data-privacy-act/" target="_blank">Data Privacy Act of 2012 <i class="material-icons tiny">open_in_new</i></a> </p>
+                    <p>
+                        <a href="#madeByAndre" class="modal-trigger">
+                            <b class="blue-grey-text">Made by Andre</b>
+                        </a>
+                    </p>
                 </center>
 
                 <br><br><br><br><br><br><br>
@@ -435,6 +444,45 @@
             </div>
         </div>
         <!-- bottombar -->
+
+        <!-- buy airduino station modal -->
+        <div id="buyAirduino" class="modal modal-fixed-footer blue-grey darken-3">
+            <div class="modal-content">
+                <h4>Purchase an Android Station</h4>
+                <p>You can now purchase an Airduino station! Please send an email to <a href="mailto:hi@andresito.xyz">hi@andresito.xyz</a> for inquiries.</p>
+            </div>
+            <div class="modal-footer blue-grey darken-2">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat white-text">Close</a>
+            </div>
+        </div>
+        <!-- .buy airduino station modal -->
+
+        <!-- made by andre modal -->
+        <div id="madeByAndre" class="modal modal-fixed-footer blue-grey darken-3">
+            <iframe src="https://andresito.xyz" style="width: 100%; height: 100%; border:0;"></iframe>
+            <div class="modal-footer blue-grey darken-2">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat white-text">Close</a>
+            </div>
+        </div>
+        <!-- .made by andre modal -->
+
+        <!-- report a problem modal -->
+        <div id="reportProblemModal" class="modal modal-fixed-footer blue-grey darken-3">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf413WDFnrxH3Lp5Q0JRCp0RrfDHgk45jw3GYDG5oraBbp-uQ/viewform" style="width: 100%; height: 100%; border:0;"></iframe>
+            <div class="modal-footer blue-grey darken-2">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat white-text">Close</a>
+            </div>
+        </div>
+        <!-- .report a problem modal -->
+
+        <!-- give feedback modal -->
+        <div id="giveFeedbackModal" class="modal modal-fixed-footer blue-grey darken-3">
+            <iframe src="https://goo.gl/forms/vlHg5tSZPgJrkBKK2" style="width: 100%; height: 100%; border:0;"></iframe>
+            <div class="modal-footer blue-grey darken-2">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat white-text">Close</a>
+            </div>
+        </div>
+        <!-- .give feedback modal -->
 
         <!-- terms and conditions modal -->
         <div id="termsconditions" class="modal modal-fixed-footer blue-grey darken-3">
